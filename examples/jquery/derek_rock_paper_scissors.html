@@ -1,0 +1,93 @@
+<html>
+	<head>
+		<title>Rock Paper Scissors</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $( document ).ready(function() {
+          var tieCount = 0;
+          var winCount = 0;
+          var lossCount = 0;
+          var buttonArray = ["#rock","#paper","#scissors"];
+
+          var find_winner = function( user , computer ) {
+              if (user == computer){
+                $( "#explain" ).html("You both chose the same thing.");
+                $( "#result" ).html("Result: Tie Game");
+                tieCount += 1;
+              }else if ((user == "rock" && computer == "scissors") || (user =="scissors" && computer == "paper")|| (user =="paper" && computer == "rock")){
+                $( "#explain" ).html("Nice job, " + user + " beats " + computer+'.');
+                $( "#result" ).html("Result: You Win!");
+                winCount += 1;
+              }else{
+                $( "#explain" ).html("Too bad, " + computer + " beats " + user+'.');
+                $( "#result" ).html("Result: You Lose");
+                lossCount += 1;
+              }
+          };
+
+          var update_score = function() {
+            $( "#wins" ).html(winCount);
+            $( "#losses" ).html(lossCount);
+            $( "#ties" ).html(tieCount);
+          };
+
+          $( ".choice_button" ).click(function() {
+            var id = this.id;
+            var randomnumber = Math.floor(Math.random() * (2 - 0 + 1));
+            $( "#user_choice" ).html(id);
+            switch (randomnumber){
+              case 0:
+                $( "#computer_choice" ).html("rock");
+              break;
+              case 1:
+               $( "#computer_choice" ).html("paper");
+              break;
+              case 2:
+               $( "#computer_choice" ).html("scissors");
+              break;
+            }
+            find_winner(id,$( "#computer_choice" ).html());
+            update_score();
+          });
+
+          $( ".autoplay" ).click(function() {
+            
+            $(buttonArray[Math.floor(Math.random() * (2 - 0 + 1))]).click();
+            
+          });
+
+      });
+    </script>
+
+
+	</head>
+  <body>
+    <div>
+      <button id="auto" class="autoplay">Random</button>
+    </div>
+    <div>
+      <button id="rock" class="choice_button">Rock</button>
+      <button id="paper" class="choice_button">Paper</button>
+      <button id="scissors" class="choice_button">Scissors</button>
+    </div>
+    <h2>Your Choice:</h2>
+    <h1 id="user_choice">~</h1>
+    <h2>Computer's Choice:</h2>
+    <h1 id="computer_choice">~</h1>
+    <h4 id="explain"></h4>
+    <h1 id="result">Result:</h1>
+    <table border="1" style="width:30%">
+      <tr>
+        <td>Wins</td>
+        <td>Losses</td> 
+        <td>Ties</td>
+      </tr>
+      <tr>
+        <td id="wins">0</td>
+        <td id="losses">0</td> 
+        <td id="ties">0</td>
+      </tr>
+    </table>
+
+  </body>
+</html>
