@@ -1,9 +1,15 @@
 <html>
 	<head>
 		<title>Rock Paper Scissors</title>
+    <link rel="stylesheet" type="text/css" href="derek_rps_style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript">
       $( document ).ready(function() {
+        var $rock_button= $('<input/>').attr({ type: 'button', id:'rock', class: 'choice_button', value:'Rock'});
+        var $paper_button= $('<input/>').attr({ type: 'button', id:'paper', class: 'choice_button',value:'Paper'});
+        var $scissors_button= $('<input/>').attr({ type: 'button', id:'scissors', class: 'choice_button',value:'Scissors'});
+        $("#button_div").append($rock_button,$paper_button,$scissors_button);
+
           var tieCount = 0;
           var winCount = 0;
           var lossCount = 0;
@@ -62,21 +68,20 @@
 
 	</head>
   <body>
+    <h1>Derek's Rock Paper Scissors Game</h1>
     <div>
       <button id="auto" class="autoplay">Random</button>
     </div>
-    <div>
-      <button id="rock" class="choice_button">Rock</button>
-      <button id="paper" class="choice_button">Paper</button>
-      <button id="scissors" class="choice_button">Scissors</button>
+    <div id="button_div">
+      
     </div>
     <h2>Your Choice:</h2>
-    <h1 id="user_choice">~</h1>
+    <h1 id="user_choice">&nbsp</h1>
     <h2>Computer's Choice:</h2>
-    <h1 id="computer_choice">~</h1>
-    <h4 id="explain"></h4>
-    <h1 id="result">Result:</h1>
-    <table border="1" style="width:30%">
+    <h1 id="computer_choice">&nbsp</h1>
+    <h4 id="explain">&nbsp</h4>
+    <h1 id="result">&nbsp</h1>
+    <table>
       <tr>
         <td>Wins</td>
         <td>Losses</td> 

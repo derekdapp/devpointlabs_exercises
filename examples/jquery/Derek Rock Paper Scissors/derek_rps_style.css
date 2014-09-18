@@ -1,0 +1,11 @@
+html{
+	background-color: steelblue;
+	text-align: center
+}
+table, tr, th{
+	width:30%; 
+    margin-left:35%; 
+    margin-right:35%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
